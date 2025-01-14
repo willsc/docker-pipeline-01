@@ -1,0 +1,29 @@
+name: Docker Build (No Push)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Check out the code
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      # 2. Build the Docker image (without pushing)
+      - name: Build Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          # push: false ensures that the image is only built locally
+          push: false
+          # Adjust the image name or tag as needed (the image remains local on the GitHub runner)
+          tags: my-local-build-test:latest
+
+      # Optional: Show that the image was built successfully
+      - name: List Docker images
+        run: docker image ls
+
