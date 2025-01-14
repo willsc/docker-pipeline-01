@@ -21,7 +21,7 @@ jobs:
           # push: false ensures that the image is only built locally
           push: false
           # Adjust the image name or tag as needed (the image remains local on the GitHub runner)
-          tags: my-local-build-test:latest
+          tags: kdb:latest
 
       # Optional: Show that the image was built successfully
       - name: List Docker images
